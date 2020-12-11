@@ -12,7 +12,8 @@ from fastapi.middleware.cors import CORSMiddleware
 api = FastAPI()
 
 origins = [
-    "https://app-cajerobackend.herokuapp.com/",
+    "http://localhost",
+    "http://localhost:8081",
     "https://cajeroatm.herokuapp.com/"
 ]
 
@@ -46,7 +47,7 @@ async def auth_user(user_in: UserIn):
     return  {"Autenticado": True}
 
 
-@api.get("app-cajerobackend.herokuapp.com/user/balance/{username}")
+@api.get("/user/balance/{username}")
 async def get_balance(username: str):
 
     user_in_db = get_user(username)
